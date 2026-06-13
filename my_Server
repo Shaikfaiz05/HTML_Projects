@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAIZ Studio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:#050505;
+    color:white;
+}
+
+#bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    z-index:100;
+}
+
+h1{
+    font-size:4rem;
+    letter-spacing:5px;
+    text-transform:uppercase;
+}
+
+p{
+    margin-top:15px;
+    font-size:1.2rem;
+    color:#cccccc;
+}
+
+.btn{
+    margin-top:30px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:black;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+}
+
+.glow{
+    color:white;
+    text-shadow:
+    0 0 10px white,
+    0 0 20px white,
+    0 0 40px cyan;
+}
+</style>
+</head>
+<body>
+
+<div id="bg"></div>
+
+<div class="content">
+    <h1 class="glow">FAIZ</h1>
+    <p>Future Web Developer & Designer</p>
+    <button class="btn">Explore</button>
+</div>
+
+<script type="module">
+
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js";
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+const renderer = new THREE.WebGLRenderer({
+antialias:true,
+alpha:true
+});
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.getElementById("bg").appendChild(renderer.domElement);
+
+const geometry = new THREE.IcosahedronGeometry(2,1);
+
+const material = new THREE.MeshStandardMaterial({
+color:0xffffff,
+wireframe:true
+});
+
+const crystal = new THREE.Mesh(geometry,material);
+scene.add(crystal);
+
+const light1 = new THREE.PointLight(0xffffff,5);
+light1.position.set(5,5,5);
+scene.add(light1);
+
+camera.position.z = 5;
+
+function animate(){
+requestAnimationFrame(animate);
+
+crystal.rotation.x += 0.005;
+crystal.rotation.y += 0.008;
+
+renderer.render(scene,camera);
+}
+
+animate();
+
+window.addEventListener('resize',()=>{
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth,window.innerHeight);
+});
+
+document.addEventListener('mousemove',(e)=>{
+const x=(e.clientX/window.innerWidth-0.5)*2;
+const y=(e.clientY/window.innerHeight-0.5)*2;
+
+crystal.rotation.x += y*0.01;
+crystal.rotation.y += x*0.01;
+});
+
+</script>
+
+</body>
+</html>
