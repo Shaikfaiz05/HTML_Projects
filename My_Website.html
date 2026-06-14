@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAIZ | Premium 3D Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050816;
+overflow-x:hidden;
+color:white;
+}
+
+/* Animated Background */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* Navbar */
+
+nav{
+position:fixed;
+width:100%;
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.05);
+z-index:999;
+}
+
+.logo{
+font-size:2rem;
+font-weight:900;
+color:#00ffff;
+text-shadow:0 0 20px cyan;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+transition:.4s;
+}
+
+nav ul li a:hover{
+color:cyan;
+}
+
+/* Hero */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:8rem;
+font-weight:900;
+letter-spacing:12px;
+
+text-shadow:
+0 0 10px cyan,
+0 0 20px cyan,
+0 0 40px cyan,
+0 0 80px cyan;
+
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-20px);
+}
+}
+
+.hero h2{
+font-size:2rem;
+color:#94a3b8;
+margin-top:20px;
+}
+
+.hero p{
+margin-top:20px;
+max-width:700px;
+line-height:1.8;
+color:#cbd5e1;
+}
+
+.btn{
+display:inline-block;
+margin-top:35px;
+padding:15px 40px;
+border-radius:40px;
+background:linear-gradient(45deg,#00ffff,#7c3aed);
+text-decoration:none;
+color:white;
+font-weight:700;
+transition:.5s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 30px cyan;
+}
+
+/* Sections */
+
+section{
+padding:100px 10%;
+}
+
+.title{
+text-align:center;
+font-size:3rem;
+margin-bottom:60px;
+color:cyan;
+}
+
+/* Cards */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+padding:30px;
+border-radius:20px;
+transition:.5s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(0,255,255,.4);
+}
+
+.card h3{
+margin-bottom:15px;
+}
+
+/* Cricket Section */
+
+.cricket{
+text-align:center;
+}
+
+.cricket h2{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.cricket span{
+color:#00ffff;
+}
+
+/* Footer */
+
+footer{
+text-align:center;
+padding:30px;
+color:#94a3b8;
+}
+
+/* Cursor Glow */
+
+.cursor{
+position:fixed;
+width:30px;
+height:30px;
+border-radius:50%;
+background:cyan;
+filter:blur(20px);
+pointer-events:none;
+z-index:9999;
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div class="cursor"></div>
+
+<nav>
+<div class="logo">FAIZ</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#cricket">Cricket</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<h1>FAIZ</h1>
+
+<h2>Future Web Developer</h2>
+
+<p>
+Crafting futuristic websites, stunning user experiences and
+creative digital solutions with modern technologies.
+</p>
+
+<a href="#" class="btn">Explore My World</a>
+
+</section>
+
+<section id="about">
+
+<h2 class="title">About Me</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Creative Design</h3>
+<p>Modern UI/UX with futuristic concepts.</p>
+</div>
+
+<div class="card">
+<h3>Web Development</h3>
+<p>HTML, CSS, JavaScript and advanced web experiences.</p>
+</div>
+
+<div class="card">
+<h3>Innovation</h3>
+<p>Building unique digital products that stand out.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<h2 class="title">My Skills</h2>
+
+<div class="grid">
+
+<div class="card">HTML5</div>
+<div class="card">CSS3</div>
+<div class="card">JavaScript</div>
+<div class="card">Python</div>
+<div class="card">MySQL</div>
+<div class="card">GitHub</div>
+
+</div>
+
+</section>
+
+<section id="cricket" class="cricket">
+
+<h2>I ❤️ <span>CRICKET</span></h2>
+
+<p>
+Passionate about cricket and technology.
+Inspired by teamwork, strategy and performance.
+</p>
+
+</section>
+
+<footer>
+© 2026 FAIZ | Premium Portfolio Experience
+</footer>
+
+<script>
+
+/* Cursor Glow */
+
+const cursor=document.querySelector('.cursor');
+
+document.addEventListener('mousemove',(e)=>{
+cursor.style.left=e.clientX+'px';
+cursor.style.top=e.clientY+'px';
+});
+
+/* Stars */
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+
+for(let i=0;i<250;i++){
+
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+stars.forEach(star=>{
+
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+ctx.fill();
+
+star.y+=0.3;
+
+if(star.y>canvas.height){
+star.y=0;
+}
+
+});
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
